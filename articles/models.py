@@ -7,7 +7,7 @@ from django.db import models
 class Article(models.Model):
      # C, T, D 저것들 다 클래스 
     title = models.CharField(max_length = 50)
-    content = models.TextField()
+    content = models.uTextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
