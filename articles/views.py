@@ -68,3 +68,32 @@ def create(request):
     # 4. create.html을 랜더링
     # 9. create.huml을 랜더링
     return render(request, 'create.html', context)
+
+def delete(request, id):
+    article = Article.objects.get(id=id)
+    article.delete()
+    
+    return redirect('articles:index')
+
+def update(request, id):
+    #기존정보
+    article = Article.objects.get(id=id)
+
+    if request.method == 'POST':
+        # instance 가 없으면 새로운 게시글 생성이라고 인식함.
+        form = ArticleForm(request.POST, instance=article) # 새로 입력한 정보
+
+
+        if form.is_valid():
+            article = form.save()
+            return redirect('articles:detail', id = article.id)
+
+    else:
+        # 기존 정보를 인스턴스에 넣음.
+        form = ArticleForm(instance=article)
+    
+    context ={
+        'form': form,
+    }
+    return render(request, 'update.html', context)
+
