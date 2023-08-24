@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{%block body%}
+    <!-- action url 에 /를 붙이면 원래 도메인 주소에 바로 그 url만 더해져서 이동
+         /가 없다면 현재 url/"직접적은 값"  으로 url 이 이동함.-->
+    <form action="" method="POST">
+        {%csrf_token%}
+        <!-- 이 토큰을 넣어야만 이 문서가 POST방식으로 보내기 안전합니다
+             를 인정해주기 때문에 forbidden 에러가 안뜸. -->
+        {{form}}
+        <!-- modelfrom으로 자동으로 생성된 html코드를 보여줌 -->
+        <input type="submit">
+    </form>
+
+{% endblock %}

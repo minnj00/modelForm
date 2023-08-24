@@ -6,9 +6,10 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- block body 바깥에 입력해야 공용으로 적용됨. home,과 create 버튼 만듬. -->
+    <a href="{%url 'articles:index' %}">Home</a>
+    <a href="{%url 'articles:create' %}">Create</a>
     {% block body %}
-
-
 
     {% endblock %}
 </body>
