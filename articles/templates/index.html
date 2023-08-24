@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>index</h1>
+
+    {% for article in articles %}
+        <p>{{article.title}}</p>
+        <a href="{% url 'articles:detail' id=article.id %}">detail</a>
+        <!-- 템플릿 태그 안에 있는 url은 app_name과 우리가 설정한 path name을 활용 -->
+        <hr> 
+    {% endfor%}
+{% endblock %}
